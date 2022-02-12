@@ -21,3 +21,28 @@
     object-fit: cover;
     border: 2px solid #ED4D77;
 }
+
+.username {
+    font-style: italic;
+    font-weight: 100;
+    color: #ffffff;
+}
+
+.username #user-name {
+    font-size: 1.6rem;
+}
+
+.username small {
+    font-size: 1.6rem;
+}
+
+.username hr {
+    width: 6vw;
+    border: none;
+    height: 2px;
+}
+
+#feed-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+}

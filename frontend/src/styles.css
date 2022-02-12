@@ -1,7 +1,7 @@
 /* Bootstrap */
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;700&display=swap');
-/* Fontes */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+/* Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,700;1,200;1,300&display=swap');
 /* Ícones */
 @import '~material-icons/iconfont/material-icons.css';
 
@@ -11,6 +11,11 @@
   padding: 0;
   font-family: 'Exo 2';
 }
+
+body {
+  background-color: #F4F4F4;
+}
+
 
 .color-pink {
   color: #ED4D77;
