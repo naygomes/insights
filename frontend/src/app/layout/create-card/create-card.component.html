@@ -20,7 +20,7 @@
                 <textarea id="text-area" class=" none form-control mr-sm-2 border-0 p-0" rows="10" maxlength="400"
                     placeholder="Escreva aqui o seu insight..." [(ngModel)]="form.text"></textarea>
             </div>
-            <hr>
+            <hr class="mb-2">
             <p class="char-limit">limite de caracteres: {{form.text? (400 - form.text.length): '400'}}</p>
 
             <div class="form-inline my-2 my-lg-0 d-flex flex-column align-items-start justify-content-start">
