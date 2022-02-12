@@ -1,0 +1,21 @@
+input {
+    width: 90%;
+    font-size: 0.9rem;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.material-icons {
+    opacity: 40%;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { 
+    display: none;
+}
+
+input:focus, textarea:focus, select:focus{
+    box-shadow: none;
+}

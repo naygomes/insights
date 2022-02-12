@@ -1,53 +1,65 @@
 #content {
-    padding: 4vw;
-    padding-top: 5.5vh;
+  padding: 4vw;
+  padding-top: 5.5vh;
 }
 
 #bg-header {
-    background-image: url('./../../../assets/background.svg');
-    height: 38vh;
-    width: 100vw;
-    background-position: bottom;
+  background-image: url('./../../../assets/background.svg');
+  height: 38vh;
+  width: 100vw;
+  background-position: bottom;
 }
 
 #logo {
-    height: 1.85rem;
+  height: 1.85rem;
 }
 
 #user {
-    border-radius: 50%;
-    height: 13.5vw;
-    width: 13.5vw;
-    object-fit: cover;
-    border: 2px solid #ED4D77;
+  border-radius: 50%;
+  height: 13.5vw;
+  width: 13.5vw;
+  object-fit: cover;
+  border: 2px solid #ED4D77;
 }
 
 .username {
-    font-style: italic;
-    font-weight: 100;
-    color: #ffffff;
+  font-style: italic;
+  font-weight: 100;
+  color: #ffffff;
 }
 
 .username #user-name {
-    font-size: 1.6rem;
-    line-height: auto;
+  font-size: 1.6rem;
+  line-height: auto;
 }
 
 .username p {
-    font-size: 0.8rem;
-    font-weight: 300;
-    opacity: 80%;
-    line-height: 0.8rem;
-    margin-bottom: 1.1rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  opacity: 80%;
+  line-height: 0.8rem;
+  margin-bottom: 1.1rem;
 }
 
 .username hr {
-    width: 6vw;
-    border: none;
-    height: 2px;
+  width: 6vw;
+  border: none;
+  height: 2px;
 }
 
 #feed-title {
-    font-size: 1.25rem;
-    font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 400;
 }
+
+.feed-cards {
+    margin-bottom: 12vh;
+}
+
+#search {
+    padding: 4vw;
+    padding-top: 0;
+    position: fixed;
+    bottom:0;
+    width:100%;
+  }
