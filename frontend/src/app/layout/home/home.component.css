@@ -1,0 +1,23 @@
+#content {
+    padding: 4vw;
+    padding-top: 5.5vh;
+}
+
+#bg-header {
+    background-image: url('./../../../assets/background.svg');
+    height: 35vh;
+    width: 100vw;
+    background-position: bottom;
+}
+
+#logo {
+    height: 1.85rem;
+}
+
+#user {
+    border-radius: 50%;
+    height: 13.5vw;
+    width: 13.5vw;
+    object-fit: cover;
+    border: 2px solid #ED4D77;
+}
