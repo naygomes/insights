@@ -1,0 +1,76 @@
+#content {
+  padding: 4vw;
+  padding-top: 5.5vh;
+}
+
+#bg-header {
+  background-image: url('./../../../assets/background.svg');
+  height: 38vh;
+  width: 100vw;
+  background-position: bottom;
+}
+
+#logo {
+  height: 1.85rem;
+}
+
+#user {
+  border-radius: 50%;
+  height: 13.5vw;
+  width: 13.5vw;
+  object-fit: cover;
+  border: 2px solid #ED4D77;
+}
+
+.username {
+  font-style: italic;
+  font-weight: 100;
+  color: #ffffff;
+}
+
+.username #user-name {
+  font-size: 1.6rem;
+  line-height: auto;
+}
+
+.username p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  opacity: 80%;
+  line-height: 0.8rem;
+  margin-bottom: 1.1rem;
+}
+
+.username hr {
+  width: 6vw;
+  border: none;
+  height: 2px;
+}
+
+#feed-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.feed-cards {
+    margin-bottom: 12vh;
+}
+
+.more span {
+ font-size: 2rem;
+ opacity: 16%;
+}
+
+.more p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #666666;
+}
+
+#search {
+    padding: 4vw;
+    padding-top: 0;
+    position: fixed;
+    bottom:0;
+    width:100%;
+}

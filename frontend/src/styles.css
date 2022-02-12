@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+/* Bootstrap */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,700;1,200;1,300&display=swap');
+/* Ícones */
+@import '~material-icons/iconfont/material-icons.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Exo 2', sans-serif;
+}
+
+body {
+  background-color: #F4F4F4;
+}
+
+
+.color-pink {
+  color: #ED4D77;
+}
+
+.bg-pink {
+  background-color: #ED4D77;
+}
+
+.card {
+  border: 0 solid black;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+

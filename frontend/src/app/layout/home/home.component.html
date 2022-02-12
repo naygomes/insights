@@ -1,1 +1,28 @@
-<p routerLink="/create-card">home works!</p>
+<div id="bg-header">
+    <div id="content">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <img id="logo" src="./../../../assets/brand-insights@3x.svg" alt="Logotipo Insights">
+            <img id="user" src="./../../../assets/nayara.jpeg" alt="Imagem do usuário">
+            <span class="material-icons color-pink"> add </span>
+        </div>
+        <div class="mt-2 username d-flex flex-column justify-content-start align-items-center">
+            <label id="user-name"> Olá, {{user.name}}! </label>
+            <p class="p-0">{{user.email}}</p>
+            <hr class="mt-0 color-pink">
+
+            <label id="feed-title" class="color-pink"> Feed de <b>Insights</b></label>
+        </div>
+        <div class="feed-cards mt-3">
+            <div class="mb-2" *ngFor="let item of feedList">
+                <insight-card [card]="item"></insight-card>
+            </div>
+            <div class="more mt-4 d-flex flex-column justify-content-start align-items-center" *ngIf="hasNext" (click)="seeMore()">
+                <span class="material-icons"> more_horiz </span>
+                <p>Toque para exibir mais insights</p>
+            </div>
+        </div>
+    </div>
+    <div id="search">
+        <search></search>
+    </div>
+</div>
