@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Card } from 'src/app/models/card';
+import { Router } from '@angular/router';
 
 export interface Tag {
   name: string;
@@ -36,7 +38,7 @@ export class CreateCardComponent implements OnInit {
     this.hasTag = false;
   }
 
-  constructor() {
+  constructor(private router: Router, private _snackBar: MatSnackBar) {
     this.form = new Card(null, null);
   }
 
@@ -44,6 +46,13 @@ export class CreateCardComponent implements OnInit {
   }
 
   postInsight() {
-
+    this.router.navigate(['/home']);
+    this.openSnackBar();
+  }
+  
+  openSnackBar() {
+    this._snackBar.open('Insight Postado com Sucesso!', 'x', {
+      duration: 3000
+    });
   }
 }
