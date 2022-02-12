@@ -12,10 +12,9 @@ export class HomeComponent implements OnInit {
     email: 'nayara.gomes@g.globo',
   }
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  public feedList: Card[] = [];
+  public page: number = 1;
+  public hasNext: boolean;
 
   cardsContent: Card[] = [
     new Card('Flamengo consegue boa vitória fora de casa na estréia da Copa Libertadores 2021', null),
@@ -24,4 +23,19 @@ export class HomeComponent implements OnInit {
     new Card('Arrascaeta fez a diferença e garantiu a vitória para o time rubro-negro.', 'Jogador'),
     new Card('Mesmo com falhas defensivas recorrentes, o time de Rogério Ceni conseguiu resolver o jogo através das boas atuações de jogadores do meio pra frente. Diego, Gerson e Arrascaeta fizeram boa partida e Gabigol, mais uma vez, converteu uma cobrança de pênalti com bastante segurança. Apesar do erro no primeiro gol do time Argentino, Arão conseguiu marcar e jogar bem', 'Melhor da Partida'),
   ]
+  
+  constructor() { 
+    this.feedList = this.cardsContent.slice((this.page * 4) - 4, (this.page * 4))
+    this.hasNext = (this.feedList.length < this.cardsContent.length);
+  }
+
+  ngOnInit(): void {
+  }
+
+  seeMore(): void {
+    this.page++;
+    this.feedList = [...this.feedList, ...this.cardsContent.slice((this.page * 4) - 4, (this.page * 4))];
+    this.hasNext = (this.feedList.length < this.cardsContent.length);
+  }
+
 }

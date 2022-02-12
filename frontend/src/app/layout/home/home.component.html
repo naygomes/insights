@@ -13,8 +13,12 @@
             <label id="feed-title" class="color-pink"> Feed de <b>Insights</b></label>
         </div>
         <div class="feed-cards mt-3">
-            <div class="mb-2" *ngFor="let item of cardsContent">
+            <div class="mb-2" *ngFor="let item of feedList">
                 <insight-card [card]="item"></insight-card>
+            </div>
+            <div class="more mt-4 d-flex flex-column justify-content-start align-items-center" *ngIf="hasNext" (click)="seeMore()">
+                <span class="material-icons"> more_horiz </span>
+                <p>Toque para exibir mais insights</p>
             </div>
         </div>
     </div>

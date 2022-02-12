@@ -56,10 +56,21 @@
     margin-bottom: 12vh;
 }
 
+.more span {
+ font-size: 2rem;
+ opacity: 16%;
+}
+
+.more p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #666666;
+}
+
 #search {
     padding: 4vw;
     padding-top: 0;
     position: fixed;
     bottom:0;
     width:100%;
-  }
+}
