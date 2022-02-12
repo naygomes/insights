@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { Card } from 'src/app/models/card';
+declare var $: any;
 
 @Component({
   selector: 'app-create-card',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-card.component.css']
 })
 export class CreateCardComponent implements OnInit {
+  
+  public form: Card;
 
-  constructor() { }
+  constructor() {
+    this.form = new Card(null, null);
+  }
 
   ngOnInit(): void {
   }
 
+  postInsight() {
+   
+  }
 }

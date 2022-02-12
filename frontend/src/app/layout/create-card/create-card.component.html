@@ -1,1 +1,37 @@
-<p routerLink="/home">create-card works!</p>
+<div class="space-border user-bar d-flex flex-row justify-content-between align-items-center">
+    <span class="material-icons color-pink" routerLink="/home"> arrow_back </span>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <p class="title color-pink m-0">
+            {{'Criar' | uppercase}}
+        </p>
+        <p class="m-0 title">
+            <b class="color-pink title">
+                {{'Insight' | uppercase}}
+            </b>
+        </p>
+    </div>
+    <div class="w-space"></div>
+</div>
+<div class="content space-border d-flex flex-column justify-content-between align-items-center">
+    <div class="card w-100 ">
+        <div class="card-body">
+            <div class="form-inline my-2 my-lg-0 d-flex flex-column align-items-start justify-content-start">
+                <small>{{'Insight' | uppercase}}</small>
+                <textarea id="text-area" class=" none form-control mr-sm-2 border-0 p-0" rows="10" maxlength="400"
+                    placeholder="Escreva aqui o seu insight..." [(ngModel)]="form.text"></textarea>
+            </div>
+            <hr>
+            <p class="char-limit">limite de caracteres: {{form.text? (400 - form.text.length): '400'}}</p>
+
+            <div class="form-inline my-2 my-lg-0 d-flex flex-column align-items-start justify-content-start">
+                <small>{{'Categoria' | uppercase}}</small>
+                <input id="text-area" class=" none form-control mr-sm-2 border-0 p-0"
+                    placeholder="Adicione uma categoria (opcional)..." [(ngModel)]="form.tag">
+            </div>
+            <hr class="my-1">
+        </div>
+    </div>
+    <div class="button w-100 p-3">
+        <button type="button" class="btn bg-pink text-white p-3 w-100">{{'Publicar' | uppercase}}</button>
+    </div>
+</div>

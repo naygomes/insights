@@ -7,6 +7,7 @@ import { HomeComponent } from './layout/home/home.component';
 import { CreateCardComponent } from './layout/create-card/create-card.component';
 import { InsightCardComponent } from './components/insight-card/insight-card.component';
 import { SearchComponent } from './components/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { SearchComponent } from './components/search/search.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
