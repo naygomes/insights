@@ -25,13 +25,24 @@
 
             <div class="form-inline my-2 my-lg-0 d-flex flex-column align-items-start justify-content-start">
                 <small>{{'Categoria' | uppercase}}</small>
-                <input id="text-area" class=" none form-control mr-sm-2 border-0 p-0"
-                    placeholder="Adicione uma categoria (opcional)..." [(ngModel)]="form.tag">
+
+                <mat-chip-list #chipList class="w-100">
+                    <mat-chip *ngIf="form.tag" (removed)="remove()">
+                        {{form.tag}}
+                        <button matChipRemove>
+                            <span class="material-icons color-pink close"> close </span>
+                        </button>
+                    </mat-chip>
+                    <input id="text-area" class="w-100 form-control mr-sm-2 border-0 p-0"
+                        placeholder="Adicione uma categoria (opcional)..." [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)" [disabled]="hasTag">
+                </mat-chip-list>
             </div>
             <hr class="my-1">
         </div>
     </div>
     <div class="button w-100 p-3">
-        <button type="button" class="btn bg-pink text-white p-3 w-100">{{'Publicar' | uppercase}}</button>
+        <button type="button" class="btn bg-pink text-white p-3 w-100" [disabled]="!form.text">{{'Publicar' | uppercase}}</button>
     </div>
 </div>
