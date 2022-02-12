@@ -1,0 +1,19 @@
+.text-card {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 16px;
+    color: black;
+    text-align: center;
+}
+
+.card-tag {
+    width: fit-content;
+
+    border: 2px solid rgba(237, 77, 119, 0.24);
+    border-radius: 4px;
+
+    font-size: 0.7rem;
+    font-weight: bold;
+
+    padding: 0.6vh 1.4vw;
+}
