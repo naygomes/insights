@@ -7,6 +7,11 @@ import { HomeComponent } from './layout/home/home.component';
 import { CreateCardComponent } from './layout/create-card/create-card.component';
 import { InsightCardComponent } from './components/insight-card/insight-card.component';
 import { SearchComponent } from './components/search/search.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { SearchComponent } from './components/search/search.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
