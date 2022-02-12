@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Card } from 'src/app/models/card';
 
 @Component({
   selector: 'insight-card',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsightCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() card: Card;
+
+  constructor() {
+    this.card = new Card(null, null);
+  }
 
   ngOnInit(): void {
   }

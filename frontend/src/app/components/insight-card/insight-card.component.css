@@ -1,3 +1,7 @@
+.card {
+    border-radius: 8px;
+}
+
 .text-card {
     font-size: 0.9rem;
     font-weight: 500;
@@ -15,5 +19,5 @@
     font-size: 0.7rem;
     font-weight: bold;
 
-    padding: 0.6vh 1.4vw;
+    padding: 0.6vh 1.5vw;
 }

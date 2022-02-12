@@ -30,10 +30,15 @@
 
 .username #user-name {
     font-size: 1.6rem;
+    line-height: auto;
 }
 
-.username small {
-    font-size: 1.6rem;
+.username p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    opacity: 80%;
+    line-height: 0.8rem;
+    margin-bottom: 1.1rem;
 }
 
 .username hr {

@@ -7,13 +7,15 @@
         </div>
         <div class="mt-2 username d-flex flex-column justify-content-start align-items-center">
             <label id="user-name"> Olá, {{user.name}}! </label>
-            <p>{{user.email}}</p>
+            <p class="p-0">{{user.email}}</p>
             <hr class="mt-0 color-pink">
 
             <label id="feed-title" class="color-pink"> Feed de <b>Insights</b></label>
         </div>
         <div class="feed-cards mt-3">
-            <insight-card></insight-card>
+            <div class="mb-2" *ngFor="let item of cardsContent">
+                <insight-card [card]="item"></insight-card>
+            </div>
         </div>
     </div>
 </div>
