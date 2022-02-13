@@ -27,25 +27,41 @@ O Insights é um projeto proposto pela equipe da Globo para os candidatos e cand
  * Autora
  
 ## Pré-requisitos
-<a target="blank" href="https://nodejs.org/en/download/">
-Instalação Node
-</a>
-<br/>
-<a target="blank" href="https://sqlitebrowser.org/dl/">
-Instalação do DB Browser	
-</a>
-</br>
-<a target="blank" href="https://insomnia.rest/download/">
-Instalação de ferramenta para fazer as requisições na API (Insomnia, Postman)	
-</a>
-</br>
 
-Clone o projeto em seu computador:
+- Instalação Node
+- Instalação de ferramenta para fazer as requisições na API (Insomnia, Postman)	
+
+- Clone o projeto em seu computador:
 ``` bash
 $ git clone https://github.com/naygomes/insights.git
 ```
 
-## Interace HTTP REST API
+## Interface HTTP REST API
+
++ Estando dentro da pasta 'insights', entre na pasta 'backend' e execute o seguinte comando no terminal:
+``` bash
+$ npm install
+```
++ Agora, execute o seguinte comando no terminal para fazer uma cópia do *.env*:
+``` bash
+$ cp .env.example .env
+```
++ Abra o arquivo *.env* e, no campo 'DB_HOST', adicione o seguinte caminho:
+``` bash
+DB_HOST=/insights/backend/
+```
++ A seguir, rode o comando abaixo para migrar as tabelas para a base de dados:
+``` bash
+$ npm run migrate
+```
++ Por fim, execute o seguinte comando para servir o projeto:
+``` bash
+$ npm run start
+```
+*OBS: Para servir o projeto no modo dev, execute o comando abaixo.*
+``` bash
+$ npm run dev
+```
 
 ## CLI para importação dos cards
 
@@ -57,7 +73,7 @@ Como no protótipo, o projeto foi baseado em telas de dispositivos mobile, e rec
 ``` bash
 $ npm install -g @angular/cli
 ```
-+ Estando dentro da pasta do insights, entre na pasta 'frontend' e execute o seguinte comando no terminal:
++ Estando dentro da pasta 'insights', entre na pasta 'frontend' e execute o seguinte comando no terminal:
 ``` bash
 $ npm install
 ```
