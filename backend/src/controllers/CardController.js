@@ -10,9 +10,15 @@ const create = async(req,res) => {
       }
 };
 
-const getAll = async(req,res) => {
+const list = async(req,res) => {
+    const filter = req.query;
+    console.log(filter)
     try {
-        const cards = await Card.findAll();
+        const cards = filter.tag? await Card.findAll({
+            where: {
+            tag: filter.tag
+          }}) 
+          : await Card.findAll();
         return res.status(200).json({cards});
     }catch(err){
         return res.status(500).json({err});
@@ -54,6 +60,14 @@ const destroy = async(req,res) => {
     }catch(err){
         return res.status(500).json("Insight não encontrado.");
     }
+};
+
+module.exports = {
+    list,
+    show,
+    create,
+    update,
+    destroy
 };
 
 

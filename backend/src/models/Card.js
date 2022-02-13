@@ -6,22 +6,20 @@ const Card = sequelize.define('Card', {
         type: DataTypes.STRING,
         allowNull: false
     },
-
     data_criacao: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
         allowNull: false
     },
-
     data_modificacao: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
         allowNull: false
     },
-
-    tags: {
+    tag: {
         type: DataTypes.STRING,
-    },
+    }, 
 }, {
-    // timestamps: false
+    createdAt: 'data_criacao',
+    updatedAt: 'data_modificacao',
 });
 
 Card.associate = function(models) {
