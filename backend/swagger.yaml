@@ -1,0 +1,403 @@
+swagger: '2.0'
+info:
+  description: >-
+    Projeto desenvolvido por Nayara Gomes para o desafio do processo seletivo da
+    Globo.
+  version: 1.0.0
+  title: Insights API
+  license:
+    name: Apache License Version 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0"
+host: localhost:3333
+basePath: /
+schemes:
+  - http
+tags:
+  - name: Card
+    description: Controller de operações dos cards
+  - name: Tag
+    description: Controller de operações das tags
+paths:
+  /card/create:
+    post:
+      tags:
+        - Card
+      summary: Adiciona um novo card
+      operationId: create-card
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: card
+          description: Conteúdo do Insight
+          required: true
+          schema:
+            $ref: '#/definitions/CardBody'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/Card'
+        '404':
+          description: Not Found
+      deprecated: false
+  /card/list:
+    get:
+      tags:
+        - Card
+      summary: Lista todos os cards cadastrados
+      operationId: list-cards
+      produces:
+        - application/json
+      parameters:
+        - name: tag
+          in: query
+          description: Tag relacionada ao Insight
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CardList'
+        '404':
+          description: Not Found
+      deprecated: false
+  /card/show/{id}:
+    get:
+      tags:
+        - Card
+      summary: Retorna o card de acordo com o id
+      operationId: show-card
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do insight
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CardShow'
+        '404':
+          description: Not Found
+      deprecated: false
+  /card/update/{id}:
+    put:
+      tags:
+        - Card
+      summary: Atualiza o card de acordo com a informação necessária
+      operationId: update-card
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do insight
+          required: true
+          type: integer
+        - in: body
+          name: card
+          description: Conteúdo do Insight a ser alterado
+          required: true
+          schema:
+            $ref: '#/definitions/CardBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CardShow'
+        '404':
+          description: Not Found
+      deprecated: false
+  /card/delete/{id}:
+    delete:
+      tags:
+        - Card
+      summary: Deleta o card de acordo com o id
+      operationId: delete-card
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do insight
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CardDelete'
+        '404':
+          description: Not Found
+      deprecated: false
+  /tag/create:
+    post:
+      tags:
+        - Tag
+      summary: Adiciona uma nova tag
+      operationId: create-tag
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: tag
+          description: Conteúdo da tag
+          required: true
+          schema:
+            $ref: '#/definitions/TagBody'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/Tag'
+        '404':
+          description: Not Found
+      deprecated: false
+  /tag/list:
+    get:
+      tags:
+        - Tag
+      summary: Lista todas as tags cadastradas
+      operationId: list-tags
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TagList'
+        '404':
+          description: Not Found
+      deprecated: false
+  /tag/show/{id}:
+    get:
+      tags:
+        - Tag
+      summary: Retorna a tag de acordo com o id
+      operationId: show-tag
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do insight
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TagShow'
+        '404':
+          description: Not Found
+      deprecated: false
+  /tag/update/{id}:
+    put:
+      tags:
+        - Tag
+      summary: Atualiza a tag de acordo com a informação necessária
+      operationId: update-tag
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do insight
+          required: true
+          type: integer
+        - in: body
+          name: tag
+          description: Conteúdo da tag a ser alterada
+          required: true
+          schema:
+            $ref: '#/definitions/TagBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TagShow'
+        '404':
+          description: Not Found
+      deprecated: false
+  /tag/delete/{id}:
+    delete:
+      tags:
+        - Tag
+      summary: Deleta a tag de acordo com o id
+      operationId: delete-tag
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do insight
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TagDelete'
+        '404':
+          description: Not Found
+      deprecated: false
+definitions:
+  CardBody:
+    type: object
+    title: cardBody
+    properties:
+      texto:
+        type: string
+        description: Conteúdo do card
+      tag:
+        type: string
+        description: Tags relacionadas ao card
+  Card:
+    type: object
+    title: card
+    properties:
+      message:
+        type: string
+        example: Insight cadastrado com sucesso!
+      card:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 1
+          texto:
+            type: string
+            example: O Vasco fez uma excelente partida fora de casa
+          tag:
+            type: string
+            example: Boa fase
+          data_modificacao:
+            type: string
+            example: '2022-02-13T17:27:07.735Z'
+          data_criacao:
+            type: string
+            example: '2022-02-13T17:27:07.735Z'
+  CardList:
+    type: object
+    title: cardList
+    properties:
+      cards:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            texto:
+              type: string
+              example: O Vasco fez uma excelente partida fora de casa
+            tag:
+              type: string
+              example: Boa fase
+            TagId:
+              type: integer
+              example: null
+            data_modificacao:
+              type: string
+              example: '2022-02-13T17:27:07.735Z'
+            data_criacao:
+              type: string
+              example: '2022-02-13T17:27:07.735Z'
+  CardShow:
+    type: object
+    title: cardShow
+    properties:
+      card:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 1
+          texto:
+            type: string
+            example: O Vasco fez uma excelente partida fora de casa
+          tag:
+            type: string
+            example: Boa fase
+          TagId:
+            type: integer
+            example: null
+          data_modificacao:
+            type: string
+            example: '2022-02-13T17:27:07.735Z'
+          data_criacao:
+            type: string
+            example: '2022-02-13T17:27:07.735Z'
+  CardDelete:
+    type: string
+    title: cardDelete
+    example: Insight deletado com sucesso.
+  TagBody:
+    type: object
+    title: tagBody
+    properties:
+      name:
+        type: string
+        description: Nome da tag
+  Tag:
+    type: object
+    title: tag
+    properties:
+      message:
+        type: string
+        example: Tag cadastrada com sucesso!
+      tag:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 1
+          tag:
+            type: string
+            example: Temporada
+  TagList:
+    type: object
+    title: tagList
+    properties:
+      tags:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            tag:
+              type: string
+              example: Temporada
+  TagShow:
+    type: object
+    title: tagShow
+    properties:
+      tag:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 1
+          tag:
+            type: string
+            example: Temporada
+  TagDelete:
+    type: string
+    title: tagDelete
+    example: Tag deletada com sucesso.
