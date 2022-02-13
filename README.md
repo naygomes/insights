@@ -69,6 +69,19 @@ $ npm run dev
 
 ## CLI para importação dos cards
 
++ Estando dentro da pasta 'insights', entre na pasta 'cli' e execute o seguinte comando para instalar as dependências do projeto:
+``` bash
+$ npm install
+```
+Existe um arquivo csv na pasta 'cli' chamado 'cards'. Nesse arquivo contém alguns dados pré-definidos para teste. Para usar outros dados, existem duas opções;
+- Apagar o arquivo *cards.csv* e adicionar o arquivo na mesma pasta, renomeando-o para *cards.csv*;
+- Copiar todo o conteúdo do arquivo desejado e colar no *cards.csv*, não esquecendo de apagar todos os dados de teste. 
+
++ Agora, basta executar o projeto com o seguinte comando:
+``` bash
+$ npm run start
+```
+
 ## Interface WEB
 
 Como no protótipo, o projeto foi baseado em telas de dispositivos mobile, e recomenda-se testá-lo em telas de smartphones, em especial Iphone Xr, Iphone 11 pro max, etc.
