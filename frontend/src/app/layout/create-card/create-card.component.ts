@@ -52,7 +52,6 @@ export class CreateCardComponent implements OnInit {
     this.cardService.createCard(this.form).subscribe(res => {
       this.router.navigate(['/home']);
       this.openSnackBar();
-      console.log(res);
     });
   }
 
