@@ -18,7 +18,7 @@ export class CreateCardComponent implements OnInit {
 
   public form: Card;
 
-  public hasTag: boolean = false;
+  public array: string[] = [];
 
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
@@ -27,16 +27,17 @@ export class CreateCardComponent implements OnInit {
     const value = (event.value || '').trim();
 
     if (value) {
-      this.form.tags = value;
-      this.hasTag = true;
+      this.array.push(value);
     }
-    // Clear the input value
     event.chipInput!.clear();
   }
 
-  remove(): void {
-    this.form.tags = null;
-    this.hasTag = false;
+  remove(item: string): void {
+    const index = this.array.indexOf(item);
+
+    if (index >= 0) {
+      this.array.splice(index, 1);
+    }
   }
 
   constructor(private router: Router, private _snackBar: MatSnackBar, private cardService: CardService) {
@@ -47,6 +48,7 @@ export class CreateCardComponent implements OnInit {
   }
 
   postInsight() {
+    this.form.tags = this.array.join(';');
     this.cardService.createCard(this.form).subscribe(res => {
       this.router.navigate(['/home']);
       this.openSnackBar();

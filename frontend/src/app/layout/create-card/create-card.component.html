@@ -27,8 +27,8 @@
                 <small>{{'Categoria' | uppercase}}</small>
 
                 <mat-chip-list #chipList class="w-100">
-                    <mat-chip *ngIf="form.tags" (removed)="remove()">
-                        {{form.tags}}
+                    <mat-chip  *ngFor="let item of array" (removed)="remove(item)">
+                        {{item}}
                         <button matChipRemove>
                             <span class="material-icons color-pink close"> close </span>
                         </button>
@@ -36,7 +36,7 @@
                     <input id="text-area" class="w-100 form-control mr-sm-2 border-0 p-0"
                         placeholder="Adicione uma categoria (opcional)..." [matChipInputFor]="chipList"
                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-                        (matChipInputTokenEnd)="add($event)" [disabled]="hasTag">
+                        (matChipInputTokenEnd)="add($event)">
                 </mat-chip-list>
             </div>
             <hr class="my-1">
