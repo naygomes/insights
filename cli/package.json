@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.0",
     "csv-parse": "^5.0.4",
-    "node-csv": "^0.1.2"
+    "form-data": "^4.0.0",
+    "node-csv": "^0.1.2",
+    "node-fetch": "^3.2.0",
+    "xhr2": "^0.2.1"
   }
 }
