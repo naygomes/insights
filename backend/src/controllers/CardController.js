@@ -44,14 +44,18 @@ const list = async (req, res) => {
                         name: filter.tag
                       }
                 }
-            ]
+            ],
+            limit: filter.limit? parseInt(filter.limit) : 30,
+            offset: filter.offset && filter.limit? parseInt(filter.offset)*parseInt(filter.limit) : filter.offset && !filter.limit? parseInt(filter.offset)*30 : 0,
         })
             : await Card.findAll({
                 include: [{
                     model: Tag,
                     as: 'tags',
                     through: { attributes: [] }
-                }]
+                }],
+                limit: filter.limit? parseInt(filter.limit) : 30,
+                offset: filter.offset && filter.limit? parseInt(filter.offset)*parseInt(filter.limit) : filter.offset && !filter.limit? parseInt(filter.offset)*30 : 0,
             });
         return res.status(200).json({ cards });
     } catch (err) {
