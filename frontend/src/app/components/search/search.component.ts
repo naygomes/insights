@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Filter } from './../../models/card';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'search',
@@ -6,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  @Output() filter = new EventEmitter<any>();
 
-  constructor() { }
+  searchFilter: Filter = new Filter(null, 30, 0);
+  constructor() {
+  }
+
+  search(value: Filter) {
+    this.filter.emit(value);
+  }
 
   ngOnInit(): void {
   }

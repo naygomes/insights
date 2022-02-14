@@ -8,7 +8,7 @@ import { Card } from 'src/app/models/card';
 })
 export class InsightCardComponent implements OnInit {
 
-  @Input() card: Card;
+  @Input() card: any;
 
   constructor() {
     this.card = new Card(null, null);

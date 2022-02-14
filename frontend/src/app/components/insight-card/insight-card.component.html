@@ -1,8 +1,8 @@
 <div class="card">
     <div class="card-body text-card d-flex flex-column align-items-center">
         <p class="m-0">{{ card.texto }}</p>
-        <div class="card-tag mt-4" *ngIf="card.tags">
-            <small class="color-pink">{{ card.tags | uppercase}}</small>
+        <div class="card-tag mt-4" *ngIf="card.tags.length">
+            <small class="color-pink">{{ card.tags[0].name | uppercase}}</small>
         </div>
     </div>
 

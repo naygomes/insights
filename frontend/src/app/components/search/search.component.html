@@ -2,8 +2,8 @@
     <div class="card-body">
         <div class="form-inline my-2 my-lg-0 d-flex flex-row align-items-center justify-content-start">
             <input class="form-control mr-sm-2 border-0 p-0" type="search"
-                placeholder="Pesquise por termos ou categorias..." aria-label="Search">
-            <span class="material-icons"> search </span>
+                placeholder="Pesquise por termos ou categorias..." aria-label="Search" [(ngModel)]="searchFilter.tag">
+            <span class="material-icons" (click)="search(searchFilter)"> search </span>
         </div>
     </div>
 </div>
