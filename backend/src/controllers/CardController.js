@@ -5,10 +5,25 @@ const Tag = require('../models/Tag');
 const create = async (req, res) => {
     const { tags, ...data } = req.body;
     const tagData = tags.split(";");
+    const tagId = [];
+
+    if (tagData && tagData.length > 0) {
+        for (let i = 0; i < tagData.length; i++) {
+            const tag = await Tag.findOrCreate({
+                where: { name: tagData[i] },
+                defaults: {
+                  name: tagData[i]
+                }
+            });
+            tagId.push(tag[0].dataValues.id);
+        }
+        
+    }
+
     try {
         const card = await Card.create(data);
-        if (tagData && tagData.length > 0) {
-            card.setTags(tagData);
+        if (tagId && tagId.length > 0) {
+            card.setTags(tagId);
         }
         return res.status(201).json({ message: "Insight cadastrado com sucesso!", card: card });
     } catch (err) {
