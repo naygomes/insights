@@ -57,6 +57,18 @@ paths:
           description: Tag relacionada ao Insight
           required: false
           type: string
+        - name: limit
+          in: query
+          description: Número de elementos por requisição
+          default: 30
+          required: false
+          type: number
+        - name: offset
+          in: query
+          description: Página da requisição
+          required: false
+          default: 0
+          type: number
       responses:
         '200':
           description: OK
