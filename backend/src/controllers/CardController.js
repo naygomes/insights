@@ -34,7 +34,6 @@ const create = async (req, res) => {
 const list = async (req, res) => {
     const filter = req.query;
     try {
-        console.log(filter.tag)
         const cards = filter.tag ? await Card.findAll({
             include: [
                 {
