@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from './../../models/card';
+import { CardService } from 'src/app/services/card.service';
+import { Card, Filter } from './../../models/card';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,30 +13,48 @@ export class HomeComponent implements OnInit {
     email: 'nayara.gomes@g.globo',
   }
 
-  public feedList: Card[] = [];
+  public feedList: any = [];
   public page: number = 1;
+
+  public filter = new Filter(null, 30, 0);
+
   public hasNext: boolean;
 
-  cardsContent: Card[] = [
-    new Card('Flamengo consegue boa vitória fora de casa na estréia da Copa Libertadores 2021', null),
-    new Card('Primeira partida de um grupo difícil exigiu que o time carioca virasse o placar em dois momentos do jogo', 'Temporada'),
-    new Card('O Flamengo não conseguia vencer um time na Argentina há mais de 40 anos', 'Histórico'),
-    new Card('Arrascaeta fez a diferença e garantiu a vitória para o time rubro-negro.', 'Jogador'),
-    new Card('Mesmo com falhas defensivas recorrentes, o time de Rogério Ceni conseguiu resolver o jogo através das boas atuações de jogadores do meio pra frente. Diego, Gerson e Arrascaeta fizeram boa partida e Gabigol, mais uma vez, converteu uma cobrança de pênalti com bastante segurança. Apesar do erro no primeiro gol do time Argentino, Arão conseguiu marcar e jogar bem', 'Melhor da Partida'),
-  ]
+  cardsContent: any = [];
   
-  constructor() { 
-    this.feedList = this.cardsContent.slice((this.page * 4) - 4, (this.page * 4))
+  constructor(private cardService: CardService) { 
+    this.feedList = this.cardsContent.slice((this.page * 4) - 4, (this.page * 4));
     this.hasNext = (this.feedList.length < this.cardsContent.length);
+    this.filter = new Filter(null, 30, 0);
   }
 
   ngOnInit(): void {
+    this.listCards(this.filter);
+  }
+
+  listCards(filter: Filter) {
+    this.cardService.listCards(filter).subscribe(res => {
+      this.cardsContent = [...this.cardsContent, ...res.cards];
+      this.feedList = [...this.feedList, ...this.cardsContent.slice((this.page * 4) - 4, (this.page * 4))];
+      this.hasNext = res.cards.length === 30;
+      console.log(this.filter.offset, this.feedList);
+    })
+  }
+
+  search(event: any){
+    this.cardsContent = [];
+    this.feedList = [];
+    this.listCards(event);
   }
 
   seeMore(): void {
     this.page++;
+    if (this.hasNext && this.feedList[this.feedList.length - 1].id === this.cardsContent[this.cardsContent.length - 1].id){
+      this.filter.offset = (this.cardsContent.length / 30);
+      this.listCards(this.filter);
+    }
     this.feedList = [...this.feedList, ...this.cardsContent.slice((this.page * 4) - 4, (this.page * 4))];
-    this.hasNext = (this.feedList.length < this.cardsContent.length);
+
   }
 
 }
