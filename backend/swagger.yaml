@@ -3,7 +3,7 @@ info:
   description: >-
     Projeto desenvolvido por Nayara Gomes para o desafio do processo seletivo da
     Globo.
-  version: 1.0.0
+  version: 1.0.1
   title: Insights API
   license:
     name: Apache License Version 2.0
@@ -264,7 +264,7 @@ definitions:
         description: Conteúdo do card
       tag:
         type: string
-        example: "1;2;3;4 (Ids das tags separadas por ;)" 
+        example: "Temporada;Histórico;Jogador (Nome das tags separadas por ;)" 
   Card:
     type: object
     title: card
@@ -353,6 +353,7 @@ definitions:
     type: string
     title: cardDelete
     example: Insight deletado com sucesso.
+    
     
   TagBody:
     type: object
