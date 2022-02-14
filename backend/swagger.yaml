@@ -264,7 +264,7 @@ definitions:
         description: Conteúdo do card
       tag:
         type: string
-        description: Tags relacionadas ao card
+        example: "1;2;3;4 (Ids das tags separadas por ;)" 
   Card:
     type: object
     title: card
@@ -281,9 +281,6 @@ definitions:
           texto:
             type: string
             example: O Vasco fez uma excelente partida fora de casa
-          tag:
-            type: string
-            example: Boa fase
           data_modificacao:
             type: string
             example: '2022-02-13T17:27:07.735Z'
@@ -305,18 +302,23 @@ definitions:
             texto:
               type: string
               example: O Vasco fez uma excelente partida fora de casa
-            tag:
-              type: string
-              example: Boa fase
-            TagId:
-              type: integer
-              example: null
             data_modificacao:
               type: string
               example: '2022-02-13T17:27:07.735Z'
             data_criacao:
               type: string
               example: '2022-02-13T17:27:07.735Z'
+            tags:
+              type: array
+              items:
+                type: object
+                properties:
+                  id: 
+                    type: integer
+                    example: 1
+                  name: 
+                    type: string
+                    example: "Temporada"
   CardShow:
     type: object
     title: cardShow
@@ -330,22 +332,28 @@ definitions:
           texto:
             type: string
             example: O Vasco fez uma excelente partida fora de casa
-          tag:
-            type: string
-            example: Boa fase
-          TagId:
-            type: integer
-            example: null
           data_modificacao:
             type: string
             example: '2022-02-13T17:27:07.735Z'
           data_criacao:
             type: string
             example: '2022-02-13T17:27:07.735Z'
+          tags:
+            type: array
+            items:
+              type: object
+              properties:
+                id: 
+                  type: integer
+                  example: 1
+                name: 
+                  type: string
+                  example: "Temporada"
   CardDelete:
     type: string
     title: cardDelete
     example: Insight deletado com sucesso.
+    
   TagBody:
     type: object
     title: tagBody

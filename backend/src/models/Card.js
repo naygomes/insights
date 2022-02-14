@@ -2,6 +2,12 @@ const DataTypes = require("sequelize");
 const sequelize = require("../config/sequelize");
 
 const Card = sequelize.define('Card', {
+    id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+    },
     texto: {
         type: DataTypes.STRING,
         allowNull: false
@@ -14,16 +20,13 @@ const Card = sequelize.define('Card', {
         type: DataTypes.DATE,
         allowNull: false
     },
-    tag: {
-        type: DataTypes.STRING,
-    }, 
 }, {
     createdAt: 'data_criacao',
     updatedAt: 'data_modificacao',
 });
 
 Card.associate = function(models) {
-    Card.belongsTo(models.Tag, { });
+    Card.belongsToMany(models.Tag, {through: 'CardTag', as: 'tags', foreignKey: 'cardId'});
 }
 
 module.exports = Card;
