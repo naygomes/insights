@@ -47,6 +47,8 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
     const { id } = req.params;
     try {
+        const tag = await Tag.findByPk(id);
+        tag.removeCards();
         const deleted = await Tag.destroy({ where: { id: id } });
         if (deleted) {
             return res.status(200).json("Tag deletada com sucesso.");
