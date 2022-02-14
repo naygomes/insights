@@ -81,6 +81,7 @@ Existe um arquivo csv na pasta 'cli' chamado 'cards'. Nesse arquivo contém algu
 ``` bash
 $ npm run start
 ```
+Pronto! Agora os dados do arquivo estão cadastrados no banco.
 
 ## Interface WEB
 
