@@ -1,9 +1,15 @@
 const { response } = require('express');
 const Card = require('../models/Card');
+const Tag = require('../models/Tag');
 
 const create = async (req, res) => {
+    const { tags, ...data } = req.body;
+    const tagData = tags.split(";");
     try {
-        const card = await Card.create(req.body);
+        const card = await Card.create(data);
+        if (tagData && tagData.length > 0) {
+            card.setTags(tagData);
+        }
         return res.status(201).json({ message: "Insight cadastrado com sucesso!", card: card });
     } catch (err) {
         res.status(500).json({ error: err });
@@ -16,9 +22,22 @@ const list = async (req, res) => {
         const cards = filter.tag ? await Card.findAll({
             where: {
                 tag: filter.tag
-            }
+            },
+            include: [
+                {
+                    model: Tag,
+                    as: 'tags',
+                    through: { attributes: [] }
+                }
+            ]
         })
-            : await Card.findAll();
+            : await Card.findAll({
+                include: [{
+                    model: Tag,
+                    as: 'tags',
+                    through: { attributes: [] }
+                }]
+            });
         return res.status(200).json({ cards });
     } catch (err) {
         return res.status(500).json({ err });
@@ -28,7 +47,13 @@ const list = async (req, res) => {
 const show = async (req, res) => {
     const { id } = req.params;
     try {
-        const card = await Card.findByPk(id);
+        const card = await Card.findByPk(id, {
+            include: [{
+                model: Tag,
+                as: 'tags',
+                through: { attributes: [] }
+            }]
+        });
         return res.status(200).json({ card });
     } catch (err) {
         return res.status(500).json({ err });
@@ -37,13 +62,17 @@ const show = async (req, res) => {
 
 const update = async (req, res) => {
     const { id } = req.params;
+    const { tags, ...data } = req.body;
+    const tagData = tags? tags.split(";"): [];
     try {
-        const [updated] = await Card.update(req.body, { where: { id: id } });
-        if (updated) {
-            const card = await Card.findByPk(id);
-            return res.status(200).send(card);
+
+        const card = await Card.findByPk(id);
+        card.update(data);
+
+        if (tagData && tagData.length > 0) {
+            card.setTags(tagData);
         }
-        throw new Error();
+        return res.status(200).send(card);
     } catch (err) {
         return res.status(500).json("Insight não encontrado");
     }
@@ -52,6 +81,8 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
     const { id } = req.params;
     try {
+        const card = await Card.findByPk(id);
+        card.removeTags();
         const deleted = await Card.destroy({ where: { id: id } });
         if (deleted) {
             return res.status(200).json("Insight deletado com sucesso.");
