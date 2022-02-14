@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   cardsContent: any = [];
   
   constructor(private cardService: CardService) { 
-    this.feedList = this.cardsContent.slice((this.page * 4) - 4, (this.page * 4));
     this.hasNext = (this.feedList.length < this.cardsContent.length);
     this.filter = new Filter(null, 30, 0);
   }
@@ -35,9 +34,8 @@ export class HomeComponent implements OnInit {
   listCards(filter: Filter) {
     this.cardService.listCards(filter).subscribe(res => {
       this.cardsContent = [...this.cardsContent, ...res.cards];
-      this.feedList = [...this.feedList, ...this.cardsContent.slice((this.page * 4) - 4, (this.page * 4))];
+      this.feedList = [...this.feedList, ...this.cardsContent.slice((this.page * 5) - 5, (this.page * 5))];
       this.hasNext = res.cards.length === 30;
-      console.log(this.filter.offset, this.feedList);
     })
   }
 
@@ -53,8 +51,7 @@ export class HomeComponent implements OnInit {
       this.filter.offset = (this.cardsContent.length / 30);
       this.listCards(this.filter);
     }
-    this.feedList = [...this.feedList, ...this.cardsContent.slice((this.page * 4) - 4, (this.page * 4))];
-
+    this.feedList = [...this.feedList, ...this.cardsContent.slice((this.page * 5) - 5, (this.page * 5))];
   }
 
 }
