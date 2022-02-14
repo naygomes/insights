@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Card } from 'src/app/models/card';
 import { Router } from '@angular/router';
+import { CardService } from 'src/app/services/card.service';
 
 export interface Tag {
   name: string;
@@ -26,7 +27,7 @@ export class CreateCardComponent implements OnInit {
     const value = (event.value || '').trim();
 
     if (value) {
-      this.form.tag = value;
+      this.form.tags = value;
       this.hasTag = true;
     }
     // Clear the input value
@@ -34,11 +35,11 @@ export class CreateCardComponent implements OnInit {
   }
 
   remove(): void {
-    this.form.tag = null;
+    this.form.tags = null;
     this.hasTag = false;
   }
 
-  constructor(private router: Router, private _snackBar: MatSnackBar) {
+  constructor(private router: Router, private _snackBar: MatSnackBar, private cardService: CardService) {
     this.form = new Card(null, null);
   }
 
@@ -46,10 +47,13 @@ export class CreateCardComponent implements OnInit {
   }
 
   postInsight() {
-    this.router.navigate(['/home']);
-    this.openSnackBar();
+    this.cardService.createCard(this.form).subscribe(res => {
+      this.router.navigate(['/home']);
+      this.openSnackBar();
+      console.log(res);
+    });
   }
-  
+
   openSnackBar() {
     this._snackBar.open('Insight Postado com Sucesso!', 'x', {
       duration: 3000

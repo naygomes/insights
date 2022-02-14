@@ -1,9 +1,9 @@
 export class Card {
-    text: string | null;
-    tag: string | null;
+    texto: string | null;
+    tags: string | null;
 
-    constructor(text: string | null, tag: string | null) {
-        this.text = text || null;
-        this.tag = tag || null;
+    constructor(texto: string | null, tags: string | null) {
+        this.texto = texto || null;
+        this.tags = tags || null;
     }
 }

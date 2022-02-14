@@ -4,7 +4,7 @@ const Tag = require('../models/Tag');
 
 const create = async (req, res) => {
     const { tags, ...data } = req.body;
-    const tagData = tags.split(";");
+    const tagData = tags? tags.split(";") : [];
     const tagId = [];
 
     if (tagData && tagData.length > 0) {

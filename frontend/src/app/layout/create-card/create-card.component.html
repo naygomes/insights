@@ -18,17 +18,17 @@
             <div class="form-inline my-2 my-lg-0 d-flex flex-column align-items-start justify-content-start">
                 <small>{{'Insight' | uppercase}}</small>
                 <textarea id="text-area" class=" none form-control mr-sm-2 border-0 p-0" rows="10" maxlength="400"
-                    placeholder="Escreva aqui o seu insight..." [(ngModel)]="form.text"></textarea>
+                    placeholder="Escreva aqui o seu insight..." [(ngModel)]="form.texto"></textarea>
             </div>
             <hr class="mb-2">
-            <p class="char-limit">limite de caracteres: {{form.text? (400 - form.text.length): '400'}}</p>
+            <p class="char-limit">limite de caracteres: {{form.texto? (400 - form.texto.length): '400'}}</p>
 
             <div class="form-inline my-2 my-lg-0 d-flex flex-column align-items-start justify-content-start">
                 <small>{{'Categoria' | uppercase}}</small>
 
                 <mat-chip-list #chipList class="w-100">
-                    <mat-chip *ngIf="form.tag" (removed)="remove()">
-                        {{form.tag}}
+                    <mat-chip *ngIf="form.tags" (removed)="remove()">
+                        {{form.tags}}
                         <button matChipRemove>
                             <span class="material-icons color-pink close"> close </span>
                         </button>
@@ -43,6 +43,6 @@
         </div>
     </div>
     <div class="button w-100 p-3">
-        <button type="button" class="btn bg-pink text-white p-3 w-100" [disabled]="!form.text" (click)="postInsight()">{{'Publicar' | uppercase}}</button>
+        <button type="button" class="btn bg-pink text-white p-3 w-100" [disabled]="!form.texto" (click)="postInsight()">{{'Publicar' | uppercase}}</button>
     </div>
 </div>
