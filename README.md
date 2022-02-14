@@ -100,7 +100,13 @@ $ npm install
 $ ng serve
 ```
 
-Após finalizar a compilação, abra o seu navegador e pressione a tecla F12. Em seguida, no campo 'dimensão' na parte superior, escolha a opção "iphone Xr" ou outro smartphone. Por fim, digite o endereço <a href="http://localhost:4200/">http://localhost:4200/</a>.
+Após finalizar a compilação, abra o seu prompt de comando e execute o seguinte comando:
+``` bash
+$ start chrome --user-data-dir="C:/Chrome dev session" --disable-web-security
+```
+Esse comando abrirá uma janela do Google Chrome que desabilita a CORS, permitindo com que as requisições possam ser feitas pelo app.
+
+Na janela do navegador que acabamos de abrir, pressione a tecla F12. Em seguida, no campo 'dimensão' na parte superior, escolha a opção "iphone Xr" ou outro smartphone. Por fim, digite o endereço <a href="http://localhost:4200/">http://localhost:4200/</a>.
 
 ---
 ## Autora
